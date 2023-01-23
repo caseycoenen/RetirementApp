@@ -1,0 +1,15 @@
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\bin\Release\RetirementApp.exe.config
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\bin\Release\RetirementApp.exe
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\bin\Release\RetirementApp.pdb
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\bin\Release\Lib.Common.dll
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\bin\Release\Oracle.ManagedDataAccess.dll
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\bin\Release\Lib.Common.pdb
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\bin\Release\Lib.Common.dll.config
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\obj\Release\RetirementApp.Properties.Resources.resources
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\obj\Release\RetirementApp.csproj.GenerateResource.Cache
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\obj\Release\RetirementApp.csproj.CoreCompileInputs.cache
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\obj\Release\RetirementApp.exe
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\obj\Release\RetirementApp.pdb
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\obj\Release\RetirementApp.Form1.resources
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\obj\Release\RetirementApp.csprojAssemblyReference.cache
+C:\Sandbox\Lumicera Application Library\Dev_Sandbox\Casey\RetirementApp\RetirementApp\obj\Release\RetirementApp.csproj.CopyComplete
