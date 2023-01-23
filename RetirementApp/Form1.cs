@@ -2102,7 +2102,10 @@ namespace RetirementApp
                             if (iOverdueNumbersRight >= 3)
                                 iTotalTimesOverdueNumsAtLeast3Right++;
                             if (iOverdueNumbersRight >= 4)
+                            {
+                                string caseytestbreak1 = "set breakpoint here";
                                 iTotalTimesOverdueNumsAtLeast4Right++;
+                            }
                             if (iOverdueNumbersRight >= 5)
                                 iTotalTimesOverdueNumsAtLeast5Right++;
                             if (strGName == "MB" && iOverdueNumbersRight >= 6)
@@ -2421,15 +2424,19 @@ namespace RetirementApp
                             //check our computer picked numbers to see if they have EVER been the right numbers in all of the history 
                             //we have for the game...
                             EnumerableRowCollection<DataRow> wasWinningEverRightResults;
+                            //casey handle sorting of array here....
+                            int[] intSortedWinningNumbers = new int[intsWinningNumbers.Length];
+                            Array.Copy(intsWinningNumbers, intSortedWinningNumbers, intsWinningNumbers.Length);
+                            Array.Sort(intSortedWinningNumbers);
                             DataTable dtJunk123;
                             if (strGName != "MM")
                             {
                                 wasWinningEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                              where myRow.Field<string>("GName") == strGName &&
-                                                             myRow.Field<Int32>("N1") == intsWinningNumbers[0] &&
-                                                             myRow.Field<Int32>("N2") == intsWinningNumbers[1] &&
-                                                             myRow.Field<Int32>("N3") == intsWinningNumbers[2] &&
-                                                             myRow.Field<Int32>("N4") == intsWinningNumbers[3]
+                                                             myRow.Field<Int32>("N1") == intSortedWinningNumbers[0] &&
+                                                             myRow.Field<Int32>("N2") == intSortedWinningNumbers[1] &&
+                                                             myRow.Field<Int32>("N3") == intSortedWinningNumbers[2] &&
+                                                             myRow.Field<Int32>("N4") == intSortedWinningNumbers[3]
                                                              select myRow;
                                 dtJunk123 = wasWinningEverRightResults.Any() ? wasWinningEverRightResults.CopyToDataTable() : null;
                                 if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2439,11 +2446,11 @@ namespace RetirementApp
                             }
                             wasWinningEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                          where myRow.Field<string>("GName") == strGName &&
-                                                         myRow.Field<Int32>("N1") == intsWinningNumbers[0] &&
-                                                         myRow.Field<Int32>("N2") == intsWinningNumbers[1] &&
-                                                         myRow.Field<Int32>("N3") == intsWinningNumbers[2] &&
-                                                         myRow.Field<Int32>("N4") == intsWinningNumbers[3] &&
-                                                         myRow.Field<Int32>("N5") == intsWinningNumbers[4]
+                                                         myRow.Field<Int32>("N1") == intSortedWinningNumbers[0] &&
+                                                         myRow.Field<Int32>("N2") == intSortedWinningNumbers[1] &&
+                                                         myRow.Field<Int32>("N3") == intSortedWinningNumbers[2] &&
+                                                         myRow.Field<Int32>("N4") == intSortedWinningNumbers[3] &&
+                                                         myRow.Field<Int32>("N5") == intSortedWinningNumbers[4]
                                                          select myRow;
                             dtJunk123 = wasWinningEverRightResults.Any() ? wasWinningEverRightResults.CopyToDataTable() : null;
                             if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2454,12 +2461,12 @@ namespace RetirementApp
                             {
                                 wasWinningEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                              where myRow.Field<string>("GName") == strGName &&
-                                                             myRow.Field<Int32>("N1") == intsWinningNumbers[0] &&
-                                                             myRow.Field<Int32>("N2") == intsWinningNumbers[1] &&
-                                                             myRow.Field<Int32>("N3") == intsWinningNumbers[2] &&
-                                                             myRow.Field<Int32>("N4") == intsWinningNumbers[3] &&
-                                                             myRow.Field<Int32>("N5") == intsWinningNumbers[4] &&
-                                                             myRow.Field<Int32>("N6") == intsWinningNumbers[5]
+                                                             myRow.Field<Int32>("N1") == intSortedWinningNumbers[0] &&
+                                                             myRow.Field<Int32>("N2") == intSortedWinningNumbers[1] &&
+                                                             myRow.Field<Int32>("N3") == intSortedWinningNumbers[2] &&
+                                                             myRow.Field<Int32>("N4") == intSortedWinningNumbers[3] &&
+                                                             myRow.Field<Int32>("N5") == intSortedWinningNumbers[4] &&
+                                                             myRow.Field<Int32>("N6") == intSortedWinningNumbers[5]
                                                              select myRow;
                                 dtJunk123 = wasWinningEverRightResults.Any() ? wasWinningEverRightResults.CopyToDataTable() : null;
                                 if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2467,15 +2474,20 @@ namespace RetirementApp
                                     m_strPopupMessage += "Generated WINNING picks for " + dtDrawDate.ToString("ddd MM-dd-yyyy") + " resulted in 6 numbers that matched actual numbers " + dtJunk123.Rows.Count.ToString() + " times, from actual date " + Convert.ToDateTime(dtJunk123.Rows[0]["DDate"]).ToString("ddd MM-dd-yyyy") + Environment.NewLine;
                                 }
                             }
+
                             EnumerableRowCollection<DataRow> wasOverdueEverRightResults;
+                            //casey handle sorting of array here....
+                            int[] intSortedOverdueNumbers = new int[intOverdueNumbers.Length];
+                            Array.Copy(intOverdueNumbers, intSortedOverdueNumbers, intOverdueNumbers.Length);
+                            Array.Sort(intSortedOverdueNumbers);
                             if (strGName != "MM")
                             {
                                 wasOverdueEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                              where myRow.Field<string>("GName") == strGName &&
-                                                             myRow.Field<Int32>("N1") == intOverdueNumbers[0] &&
-                                                             myRow.Field<Int32>("N2") == intOverdueNumbers[1] &&
-                                                             myRow.Field<Int32>("N3") == intOverdueNumbers[2] &&
-                                                             myRow.Field<Int32>("N4") == intOverdueNumbers[3]
+                                                             myRow.Field<Int32>("N1") == intSortedOverdueNumbers[0] &&
+                                                             myRow.Field<Int32>("N2") == intSortedOverdueNumbers[1] &&
+                                                             myRow.Field<Int32>("N3") == intSortedOverdueNumbers[2] &&
+                                                             myRow.Field<Int32>("N4") == intSortedOverdueNumbers[3]
                                                              select myRow;
                                 dtJunk123 = wasOverdueEverRightResults.Any() ? wasOverdueEverRightResults.CopyToDataTable() : null;
                                 if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2485,11 +2497,11 @@ namespace RetirementApp
                             }
                             wasOverdueEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                          where myRow.Field<string>("GName") == strGName &&
-                                                         myRow.Field<Int32>("N1") == intOverdueNumbers[0] &&
-                                                         myRow.Field<Int32>("N2") == intOverdueNumbers[1] &&
-                                                         myRow.Field<Int32>("N3") == intOverdueNumbers[2] &&
-                                                         myRow.Field<Int32>("N4") == intOverdueNumbers[3] &&
-                                                         myRow.Field<Int32>("N5") == intOverdueNumbers[4]
+                                                         myRow.Field<Int32>("N1") == intSortedOverdueNumbers[0] &&
+                                                         myRow.Field<Int32>("N2") == intSortedOverdueNumbers[1] &&
+                                                         myRow.Field<Int32>("N3") == intSortedOverdueNumbers[2] &&
+                                                         myRow.Field<Int32>("N4") == intSortedOverdueNumbers[3] &&
+                                                         myRow.Field<Int32>("N5") == intSortedOverdueNumbers[4]
                                                          select myRow;
                             dtJunk123 = wasOverdueEverRightResults.Any() ? wasOverdueEverRightResults.CopyToDataTable() : null;
                             if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2500,12 +2512,12 @@ namespace RetirementApp
                             {
                                 wasOverdueEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                              where myRow.Field<string>("GName") == strGName &&
-                                                             myRow.Field<Int32>("N1") == intOverdueNumbers[0] &&
-                                                             myRow.Field<Int32>("N2") == intOverdueNumbers[1] &&
-                                                             myRow.Field<Int32>("N3") == intOverdueNumbers[2] &&
-                                                             myRow.Field<Int32>("N4") == intOverdueNumbers[3] &&
-                                                             myRow.Field<Int32>("N5") == intOverdueNumbers[4] &&
-                                                             myRow.Field<Int32>("N6") == intOverdueNumbers[5]
+                                                             myRow.Field<Int32>("N1") == intSortedOverdueNumbers[0] &&
+                                                             myRow.Field<Int32>("N2") == intSortedOverdueNumbers[1] &&
+                                                             myRow.Field<Int32>("N3") == intSortedOverdueNumbers[2] &&
+                                                             myRow.Field<Int32>("N4") == intSortedOverdueNumbers[3] &&
+                                                             myRow.Field<Int32>("N5") == intSortedOverdueNumbers[4] &&
+                                                             myRow.Field<Int32>("N6") == intSortedOverdueNumbers[5]
                                                              select myRow;
                                 dtJunk123 = wasOverdueEverRightResults.Any() ? wasOverdueEverRightResults.CopyToDataTable() : null;
                                 if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2513,15 +2525,20 @@ namespace RetirementApp
                                     m_strPopupMessage += "Generated OVERDUE picks for " + dtDrawDate.ToString("ddd MM-dd-yyyy") + " resulted in 6 numbers that matched actual numbers " + dtJunk123.Rows.Count.ToString() + " times, from actual date " + Convert.ToDateTime(dtJunk123.Rows[0]["DDate"]).ToString("ddd MM-dd-yyyy") + Environment.NewLine;
                                 }
                             }
+
                             EnumerableRowCollection<DataRow> wasScoredEverRightResults;
+                            //casey handle sorting of array here....
+                            int[] intSortedScoredNumbers = new int[intScoredNumbers.Length];
+                            Array.Copy(intScoredNumbers, intSortedScoredNumbers, intScoredNumbers.Length);
+                            Array.Sort(intSortedScoredNumbers);
                             if (strGName != "MM")
                             {
                                 wasScoredEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                              where myRow.Field<string>("GName") == strGName &&
-                                                             myRow.Field<Int32>("N1") == intScoredNumbers[0] &&
-                                                             myRow.Field<Int32>("N2") == intScoredNumbers[1] &&
-                                                             myRow.Field<Int32>("N3") == intScoredNumbers[2] &&
-                                                             myRow.Field<Int32>("N4") == intScoredNumbers[3]
+                                                             myRow.Field<Int32>("N1") == intSortedScoredNumbers[0] &&
+                                                             myRow.Field<Int32>("N2") == intSortedScoredNumbers[1] &&
+                                                             myRow.Field<Int32>("N3") == intSortedScoredNumbers[2] &&
+                                                             myRow.Field<Int32>("N4") == intSortedScoredNumbers[3]
                                                              select myRow;
                                 dtJunk123 = wasScoredEverRightResults.Any() ? wasScoredEverRightResults.CopyToDataTable() : null;
                                 if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2531,11 +2548,11 @@ namespace RetirementApp
                             }
                             wasScoredEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                          where myRow.Field<string>("GName") == strGName &&
-                                                         myRow.Field<Int32>("N1") == intScoredNumbers[0] &&
-                                                         myRow.Field<Int32>("N2") == intScoredNumbers[1] &&
-                                                         myRow.Field<Int32>("N3") == intScoredNumbers[2] &&
-                                                         myRow.Field<Int32>("N4") == intScoredNumbers[3] &&
-                                                         myRow.Field<Int32>("N5") == intScoredNumbers[4]
+                                                         myRow.Field<Int32>("N1") == intSortedScoredNumbers[0] &&
+                                                         myRow.Field<Int32>("N2") == intSortedScoredNumbers[1] &&
+                                                         myRow.Field<Int32>("N3") == intSortedScoredNumbers[2] &&
+                                                         myRow.Field<Int32>("N4") == intSortedScoredNumbers[3] &&
+                                                         myRow.Field<Int32>("N5") == intSortedScoredNumbers[4]
                                                          select myRow;
                             dtJunk123 = wasScoredEverRightResults.Any() ? wasScoredEverRightResults.CopyToDataTable() : null;
                             if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2546,12 +2563,12 @@ namespace RetirementApp
                             {
                                 wasScoredEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                              where myRow.Field<string>("GName") == strGName &&
-                                                             myRow.Field<Int32>("N1") == intScoredNumbers[0] &&
-                                                             myRow.Field<Int32>("N2") == intScoredNumbers[1] &&
-                                                             myRow.Field<Int32>("N3") == intScoredNumbers[2] &&
-                                                             myRow.Field<Int32>("N4") == intScoredNumbers[3] &&
-                                                             myRow.Field<Int32>("N5") == intScoredNumbers[4] &&
-                                                             myRow.Field<Int32>("N6") == intScoredNumbers[5]
+                                                             myRow.Field<Int32>("N1") == intSortedScoredNumbers[0] &&
+                                                             myRow.Field<Int32>("N2") == intSortedScoredNumbers[1] &&
+                                                             myRow.Field<Int32>("N3") == intSortedScoredNumbers[2] &&
+                                                             myRow.Field<Int32>("N4") == intSortedScoredNumbers[3] &&
+                                                             myRow.Field<Int32>("N5") == intSortedScoredNumbers[4] &&
+                                                             myRow.Field<Int32>("N6") == intSortedScoredNumbers[5]
                                                              select myRow;
                                 dtJunk123 = wasScoredEverRightResults.Any() ? wasScoredEverRightResults.CopyToDataTable() : null;
                                 if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2559,15 +2576,20 @@ namespace RetirementApp
                                     m_strPopupMessage += "Generated SCORED picks for " + dtDrawDate.ToString("ddd MM-dd-yyyy") + " resulted in 6 numbers that matched actual numbers " + dtJunk123.Rows.Count.ToString() + " times, from actual date " + Convert.ToDateTime(dtJunk123.Rows[0]["DDate"]).ToString("ddd MM-dd-yyyy") + Environment.NewLine;
                                 }
                             }
+
                             EnumerableRowCollection<DataRow> wasAlgorithmEverRightResults;
+                            //casey handle sorting of array here....although I believe the algorithm array might already be sorted
+                            int[] intSortedAlgorithmNumbers = new int[intAlgorithmNumbers.Length];
+                            Array.Copy(intAlgorithmNumbers, intSortedAlgorithmNumbers, intAlgorithmNumbers.Length);
+                            Array.Sort(intSortedAlgorithmNumbers);
                             if (strGName != "MM")
                             {
                                 wasAlgorithmEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                             where myRow.Field<string>("GName") == strGName &&
-                                                            myRow.Field<Int32>("N1") == intAlgorithmNumbers[0] &&
-                                                            myRow.Field<Int32>("N2") == intAlgorithmNumbers[1] &&
-                                                            myRow.Field<Int32>("N3") == intAlgorithmNumbers[2] &&
-                                                            myRow.Field<Int32>("N4") == intAlgorithmNumbers[3]
+                                                            myRow.Field<Int32>("N1") == intSortedAlgorithmNumbers[0] &&
+                                                            myRow.Field<Int32>("N2") == intSortedAlgorithmNumbers[1] &&
+                                                            myRow.Field<Int32>("N3") == intSortedAlgorithmNumbers[2] &&
+                                                            myRow.Field<Int32>("N4") == intSortedAlgorithmNumbers[3]
                                                             select myRow;
                                 dtJunk123 = wasAlgorithmEverRightResults.Any() ? wasAlgorithmEverRightResults.CopyToDataTable() : null;
                                 if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2577,11 +2599,11 @@ namespace RetirementApp
                             }
                             wasAlgorithmEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                         where myRow.Field<string>("GName") == strGName &&
-                                                        myRow.Field<Int32>("N1") == intAlgorithmNumbers[0] &&
-                                                        myRow.Field<Int32>("N2") == intAlgorithmNumbers[1] &&
-                                                        myRow.Field<Int32>("N3") == intAlgorithmNumbers[2] &&
-                                                        myRow.Field<Int32>("N4") == intAlgorithmNumbers[3] &&
-                                                        myRow.Field<Int32>("N5") == intAlgorithmNumbers[4]
+                                                        myRow.Field<Int32>("N1") == intSortedAlgorithmNumbers[0] &&
+                                                        myRow.Field<Int32>("N2") == intSortedAlgorithmNumbers[1] &&
+                                                        myRow.Field<Int32>("N3") == intSortedAlgorithmNumbers[2] &&
+                                                        myRow.Field<Int32>("N4") == intSortedAlgorithmNumbers[3] &&
+                                                        myRow.Field<Int32>("N5") == intSortedAlgorithmNumbers[4]
                                                         select myRow;
                             dtJunk123 = wasAlgorithmEverRightResults.Any() ? wasAlgorithmEverRightResults.CopyToDataTable() : null;
                             if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
@@ -2592,12 +2614,12 @@ namespace RetirementApp
                             {
                                 wasAlgorithmEverRightResults = from myRow in m_dtRetireData.AsEnumerable()
                                                             where myRow.Field<string>("GName") == strGName &&
-                                                            myRow.Field<Int32>("N1") == intAlgorithmNumbers[0] &&
-                                                            myRow.Field<Int32>("N2") == intAlgorithmNumbers[1] &&
-                                                            myRow.Field<Int32>("N3") == intAlgorithmNumbers[2] &&
-                                                            myRow.Field<Int32>("N4") == intAlgorithmNumbers[3] &&
-                                                            myRow.Field<Int32>("N5") == intAlgorithmNumbers[4] &&
-                                                            myRow.Field<Int32>("N6") == intAlgorithmNumbers[5]
+                                                            myRow.Field<Int32>("N1") == intSortedAlgorithmNumbers[0] &&
+                                                            myRow.Field<Int32>("N2") == intSortedAlgorithmNumbers[1] &&
+                                                            myRow.Field<Int32>("N3") == intSortedAlgorithmNumbers[2] &&
+                                                            myRow.Field<Int32>("N4") == intSortedAlgorithmNumbers[3] &&
+                                                            myRow.Field<Int32>("N5") == intSortedAlgorithmNumbers[4] &&
+                                                            myRow.Field<Int32>("N6") == intSortedAlgorithmNumbers[5]
                                                             select myRow;
                                 dtJunk123 = wasAlgorithmEverRightResults.Any() ? wasAlgorithmEverRightResults.CopyToDataTable() : null;
                                 if (dtJunk123 != null && dtJunk123.Rows.Count > 0)
